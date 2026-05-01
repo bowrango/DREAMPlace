@@ -424,7 +424,11 @@ class NonLinearPlace(BasicPlace.BasicPlace):
                         assert 0, "unsupported optimizer %s" % (optimizer_name)
 
                     # plot placement
-                    if params.plot_flag and (iteration % 100 == 0 or iteration == 999):
+                    # Cadence controlled by DREAMPLACE_PLOT_EVERY (default 100,
+                    # matching upstream). Set to 1 from the bowrango adapter to
+                    # snapshot every iteration.
+                    _plot_every = int(os.environ.get("DREAMPLACE_PLOT_EVERY", "100"))
+                    if params.plot_flag and (iteration % _plot_every == 0 or iteration == 999):
                         cur_pos = self.pos[0].data.clone().cpu().numpy()
                         self.plot(params, placedb, iteration, cur_pos)
 
