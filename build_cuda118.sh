@@ -14,6 +14,6 @@ cd build
 cmake .. \
   -DCMAKE_INSTALL_PREFIX=/DREAMPlace/install \
   -DPython_EXECUTABLE=$(which python3) \
-  -DCMAKE_CUDA_ARCHITECTURES=86
+  -DCMAKE_CUDA_ARCHITECTURES=8.6
 make -j2
 make install
