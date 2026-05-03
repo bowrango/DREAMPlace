@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    cmake \
+    git \
     python3 \
     python3-dev \
     python3-pip \
@@ -18,9 +18,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tcl \
     libcairo2-dev \
     pkg-config \
+    zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN python3 -m pip install --no-cache-dir --upgrade \
+    pip \
+    setuptools \
+    wheel \
+    cmake==3.26.4
 
 RUN python3 -m pip install --no-cache-dir \
     torch==2.0.1+cu118 \
@@ -34,6 +39,7 @@ RUN python3 -m pip install --no-cache-dir \
     "cairocffi>=0.9.0" \
     "pkgconfig>=1.4.0" \
     "setuptools>=39.1.0" \
+    numpy \
     scipy \
     shapely \
     ncg_optimizer \
