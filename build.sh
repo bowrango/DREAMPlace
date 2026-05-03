@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build DREAMPlace inside the CUDA 11.8 dependency image.
 # Invoke from external/DREAMPlace via:
-#   docker run --rm --gpus all -v ${PWD}:/DREAMPlace -w /DREAMPlace bowrango/dreamplace:cuda118 bash build.sh
+#   docker run --rm --gpus all -v ${PWD}:/dreamplace -w /dreamplace bowrango/dreamplace:cuda118 bash build.sh
 #
 # By default this lets DREAMPlace's CMakeLists.txt choose CUDA architectures.
 # To force a list, pass e.g.
@@ -18,7 +18,7 @@ cd build
 
 cmake_args=(
   ..
-  -DCMAKE_INSTALL_PREFIX=/DREAMPlace/install
+  -DCMAKE_INSTALL_PREFIX=/dreamplace/install
   -DPython_EXECUTABLE="$(which python3)"
 )
 
