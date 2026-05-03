@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libeigen3-dev \
     bison \
     flex \
+    libfl-dev \
     tcl \
     libcairo2-dev \
     pkg-config \
